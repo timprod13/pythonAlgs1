@@ -44,7 +44,7 @@ def solve_sorted(my_dict):
 
 def solve_for(my_dict):
     top_comp = []  # O(1)
-    for i in range(3):  # O(N)
+    for i in range(N):  # O(N)
         max_val = ['', 0]  # O(1)
         for key, value in enumerate(my_dict):  # O(N) enumerate используем как замену счётчика
             if max_val[1] < my_dict[value]:  # O(1)
@@ -56,6 +56,7 @@ def solve_for(my_dict):
 
 storage = {'Alpha': 500, 'Beta': 1000, 'Gamma': 750, 'Delta': 1500, 'Epsilon': 220,
            'Eta': 2000, 'Yotta': 3000, 'Lambda': 1850, 'Omicron': 1660, 'Omega': 78}
+N = 3
 
 print(storage)
 print(solve_heap(storage))
