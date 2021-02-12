@@ -34,14 +34,21 @@ class StackClass(object):
         heapq.heapify(self.index)
         self.capacity = capacity
 
+    # C помощью len(self.stacks) мы можем узнать количество стеков, соответсвенно, если нам нужно узнать количество
+    # элементов в определенном стеке, первом, например мы напишем len(self.stacks[0]). len(self.stacks[-1])
+    # показывает количество элементов в текущем (по сути последнем) стеке и достигается это добавлением значений в
+    # стек и индексом -1. Таким образом мы можем сравнить длину текущего стека с заданной длиной, если значения равны
+    # - мы просто добавляем к текущим стекам пустой и записываем значения элементов в него. С теми же правилами
+    # написан и pop
+
     def push(self, val):
-        if not self.stacks or len(self.stacks[-1]) == self.capacity:
+        if len(self.stacks[-1]) == self.capacity:
             self.stacks.append([])  # создаём пустой стек для очередного элемента
         self.stacks[-1].append(val)
 
     def pop(self):
         if len(self.stacks) == 0:
-            return -1   # если затёрли все стеки - возвращаем пользователю -1
+            return -1  # если затёрли все стеки - возвращаем пользователю -1
         val = self.stacks[-1].pop()
         while len(self.stacks) >= 1 and len(self.stacks[-1]) == 0:
             self.stacks.pop()  # затираем пустой стек после выталкивания очередного элемента

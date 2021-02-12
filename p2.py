@@ -23,11 +23,22 @@ import random
 
 
 # неоптимальное решение O(N^2)
-def un_optimal(my_lst):
-    min_num = my_lst[0]
-    for j in range(len(my_lst) - 1):
-        if min_num > my_lst[j + 1]:
-            min_num = my_lst[j + 1]
+def true_un_optimal(my_lst):
+    min_num = my_lst[0]  # O(1)
+    for k in range(len(my_lst)):  # O(N)
+        for kk in range(len(my_lst)):  # O(N)
+            if my_lst[k] > my_lst[kk]:  # O(1)
+                if min_num > my_lst[kk]:  # O(1)
+                    min_num = my_lst[kk]  # O(1)
+    return min_num  # O(1)
+
+
+# неоптимальное решение O(N)
+def un_optimal(my_lst):  # O(n)
+    min_num = my_lst[0]  # O(1)
+    for j in range(len(my_lst) - 1):  # O(N)
+        if min_num > my_lst[j + 1]:  # O(1)
+            min_num = my_lst[j + 1]  # O(1)
     return min_num
 
 
@@ -43,3 +54,4 @@ for jj in range(1, 15):
 print("Random list: " + str(lst))
 print(un_optimal(lst))
 print(optimal(lst))
+print(true_un_optimal(lst))
